@@ -1,0 +1,111 @@
+
+CREATE TABLE Persons(
+PersonID INT AUTO_INCREMENT,
+Person_Code VARCHAR (255) NOT NULL,
+lastName VARCHAR (255) NOT NULL,
+firstName VARCHAR (255) NOT NULL,
+PRIMARY KEY (Person_ID)
+
+);
+
+CREATE TABLE Customer(
+CustomerID INT AUTO_INCREMENT,
+CustomerCode VARCHAR(255),
+firstName VARCHAR (255),
+lastName VARCHAR (255),
+Person_ID INT,
+Address_IDC INT,
+PRIMARY KEY (Customer_ID),
+CONSTRAINT PK_CustomerPerson FOREIGN KEY (Person_ID) REFERENCES Person(Person_ID)
+);
+
+
+CREATE TABLE Emails(
+PersonID INT,
+EmailID INT,
+CONSTRAINT PK_Emails_Person FOREIGN  KEY (PersonID) REFERENCES Persons(PersonID),
+CONSTRAINT PK_Emails_Email FOREIGN KEY (EmailID) REFERENCES Email(EmailID)
+);
+
+CREATE TABLE Emails(
+EmailID INT AUTO_INCREMENT,
+Email VARCHAR (255),
+
+PRIMARY KEY (EmailID)
+);
+
+
+CREATE TABLE Address(
+AddressID INT AUTO_INCREMENT,
+City VARCHAR(255),
+State VARCHAR (255),
+Zip INT (10),
+PRIMARY KEY (CAZIP),
+Customer_ID INT ,
+Person_ID INT,
+CONSTRAINT PK_PersonAddress FOREIGN KEY (Person_ID) REFERENCES person(Person_ID),
+CONSTRAINT PK_CustomerAdress FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID)
+);
+
+
+
+
+CREATE TABLE country(
+CountryID INT AUTO_INCREMENT,
+CountryName VARCHAR (255),
+AddressID INT,
+PRIMARY KEY (CountryID),
+CONSTRAINT PK_countryAddress FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
+);
+
+
+CREATE TABLE Product(
+ProductID INT AUTO_INCREMENT ,
+ProductCODE VARCHAR (255),
+ProductType VARCHAR (255),
+Name VARCHAR (255),
+StartDate DateTime,
+EndDate DateTime,
+Price float
+
+
+
+);
+
+
+CREATE TABLE Invoices (
+InVoiceID INT (10) AUTO_INCREMENT,
+Customer_ID INT,
+InvoiceDate DateTime,
+quantity INT (11)  NOT NULL,
+PRIMARY KEY (InVoiceID),
+CONSTRAINT PK_InvoiceCustomer  FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID)
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
