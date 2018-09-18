@@ -29,19 +29,19 @@ public class General extends Customer {
 	@Override
 	Double getTax() {
 		
-		return null;
+		return 0;
 	}
 
 	@Override
 	Double getDiscount(double subTotal) {
 		
-		return (double) 0;
+		return  0;
 	}
 
 	@Override
 	Double getAdditionalFee() {
 		
-		return (double) 0;
+		return 0;
 	}
 
 }
