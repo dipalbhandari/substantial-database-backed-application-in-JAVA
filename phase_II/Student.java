@@ -16,7 +16,7 @@ public class Student extends Customer{
 	@Override
 	Double getTax() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	
