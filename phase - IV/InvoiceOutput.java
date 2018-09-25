@@ -77,16 +77,6 @@ public class InvoiceOutput{
 			System.out.println(custName + "     "+ perName);
 		}
 
-		/*	this.fl.append(String.format("%-10s %-40s %-25s $%-10.2f $%-10.2f $%-10.2f $%-8.2f $%-8.2f \n"
-					,in.getInvoiceCode(),custName,perName,sub.get(num),fee.get(num),taxes.get(num),discount.get(num),total.get(num)));
-				num++;*/
-
-		//		this.fl.append("===============================================================================================================================\n");
-		//		this.fl.append(String.format("%-78s $%-10.2f $%-10.2f $%-10.2f $%-10.2f $%-10.2f ",
-		//				"TOTAL",sum(sub),sum(fee),sum(taxes),sum(discount),sum(total)));
-		//
-		//		this.fl.append(String.format("\n\n	INDIVIDUAL INVOICE DETAIL REPORT\n"));
-		//		this.fl.append("============================\n");
 		java.util.Iterator<Invoice> it2 =  list.iterator();
 		while(it2.hasNext()){
 			Invoice in2 =it2.next();
@@ -139,119 +129,6 @@ public class InvoiceOutput{
 		}
 	}
 
-	//		
-	//		
-	//		
-	//	}
-	//
-	//
-	//	public void InvCal(Invoice inv){
-	//
-	//		double sum =0;
-	//		double sumTax =0;
-	//		double sumTotal =0;
-	//		String s1[] = inv.toString().split("\\+");
-	//
-	//		String s2[] = s1[4].split(",");
-	//		int ticketNumber = 0;
-	//		for(int i=0;i<s2.length;i++) {
-	//
-	//			String s3[] = s2[i].split(":");
-	//			
-	//			switch(getType(s3[0])){
-	//			case 'M':{
-	//				String date=null;
-	//				Movie m = new Movie(s3[0]);
-	//				ticketNumber = Integer.parseInt(s3[1]);
-	//				ArrayList<Product> pro = fr.readProduct();
-	//				String line [] = pro.toString().split("\\)");
-	//				for(int j=0;j<line.length;j++) {
-	//					String st [] = line[j].split(":");
-	//					if(st[0].contains(s3[0])) {
-	//						String s[] =st[2].split(" ");
-	//						date=s[0];
-	//
-	//					}
-	//				}
-	//				sum+=(m.subTotal(s3[0], s3[1],date)); 
-	//
-	//				sumTax+=(m.getTax(s3[0], s3[1],date));
-	//				break;
-	//			}
-	//			case 'P':{
-	//				if(s3.length==3) {
-	//					String ref =s3[2];
-	//					int qty=0;
-	//					for(int j=0;j<s2.length;j++) {
-	//						String temp[] = s2[j].split(":");
-	//						if(ref.contains(temp[0])) {
-	//							qty=Integer.parseInt(temp[1]);
-	//						}
-	//					}
-	//					if(qty>(Integer.parseInt(s3[1]))){
-	//						ParkingPass p = new ParkingPass(s3[0]);
-	//						sum+=(p.subTotal(s3[0], Integer.toString(0)));
-	//						sumTax+=p.getTax(s3[0], Integer.toString(0));
-	//						break;
-	//					}
-	//					else {
-	//						ParkingPass p = new ParkingPass(s3[0]);
-	//						qty=(Integer.parseInt(s3[1]))-qty;
-	//						sumTax+=p.getTax(s3[0],Integer.toString(qty));
-	//						sum+=(p.subTotal(s3[0],Integer.toString(qty)));
-	//						break;
-	//					}
-	//
-	//				}
-	//				else{
-	//					ParkingPass p = new ParkingPass(s3[0]);
-	//					sum+=(p.subTotal(s3[0], s3[1]));
-	//					sumTax+=p.getTax(s3[0], s3[1]);
-	//					sumTotal+=(p.grandTotal(s3[0], s3[1]));
-	//					break;
-	//				}
-	//			}
-	//			case 'S':{
-	//				Season s = new Season(s3[0]);
-	//				sum+=(s.subTotal(s3[0], s3[1],s1[3]));
-	//				sumTax+=(s.getTax(s3[0],s3[1],s1[3]));
-	//				break;
-	//			}
-	//			case 'R':{
-	//				if(ticketNumber==0) {
-	//					Refreshment r = new Refreshment(s3[0]);
-	//
-	//					sum+=(r.subTotal(s3[0], s3[1]));
-	//					sumTax+=(r.getTax(s3[0], s3[1]));
-	//					break;}
-	//				else {
-	//					Refreshment r = new Refreshment(s3[0]);
-	//					sum+=((r.subTotal(s3[0], s3[1]))-(0.05*(r.subTotal(s3[0], s3[1]))));
-	//					sumTax+=((r.getTax(s3[0], s3[1]))-(0.05*(r.getTax(s3[0], s3[1]))));
-	//				}
-	//
-	//			}
-	//			}
-	//
-	//
-	//		}
-	//		if(getCustType(inv)=='G') 
-	//			this.fee.add(0.0);
-	//		else
-	//			this.fee.add(6.75);
-	//		if(getCustType(inv)=='G') 
-	//			this.discount.add(0.0);
-	//		else {
-	//			Student dent = new Student();
-	//			this.discount.add((dent.getDiscount(sum)+sumTax));
-	//		}
-	//		this.sub.add(sum);
-	//		this.taxes.add(sumTax);
-	//		sumTotal=sum+sumTax+this.fee.get(count)-this.discount.get(count);
-	//		this.total.add(sumTotal);
-	//		
-	//
-	//	}
 	public void InvCal2(Invoice inv){
 		count=0;
 		double sum =0 ,sum2=0;
@@ -266,14 +143,7 @@ public class InvoiceOutput{
 		String str []= inv.prod();
 		int ticketNumber = 0;
 		for(int i=0;i<pr.length;i++) {
-			//
-			//		/-	Date dat;
-			//			String date=null;
-			//			SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
-			//			ArrayList<Product> pro1= fr.readProduct();
-			//			String[] line1 = pro1.toString().split("\\)");
-			//
-			//			String str2[] = str[i].split(","); */
+			
 			switch(type[i].charAt(0)){
 			case 'M':{
 				Movie m = new Movie(str[0]);
@@ -281,105 +151,21 @@ public class InvoiceOutput{
 				System.out.println(str[0]+"Movie");
 				ticketNumber = (int)qt[i];
 			}
-			//				for(int i1=0;i1<line1.length;i1++) {
-			//					String data[] =line1[i1].split(":");
-			//
-			//					if(data[0].contains(s3[0])) {
-			//						try {
-			//							String temp [] =data[2].split(" ");
-			//							dat = dateformat.parse(temp[0]);
-			//							date=dateformat.format(dat);
-			//						} catch (ParseException e) {
-			//
-			//							e.printStackTrace();
-			//						} 	
-			//						String temp[] = data[0].split(" ");
-			//						this.fl.append(String.format("%-10s %-15s %-20s %-15s",temp[1],"Movie Ticket",data[4],date));
-			//					}
-			//				}
-			//
-			//				Movie m = new Movie(s3[0]);
-			//				ticketNumber = Integer.parseInt(s3[1]);
-			//				ArrayList<Product> pro = fr.readProduct();
-			//				String line [] = pro.toString().split("\\)");
-			//				for(int j=0;j<line.length;j++) {
-			//					String st [] = line[j].split(":");
-			//					if(st[0].contains(s3[0])) {
-			//						String s[] =st[2].split(" ");
-			//						date=s[0];
-			//
-			//					}
-			//				}
-			//				sum=(m.subTotal(s3[0], s3[1],date)); 
-			//
-			//				sumTax=(m.getTax(s3[0], s3[1],date));
-			//				break;
-			//			}
+		
 			case 'P':{
 				ParkingPass p = new ParkingPass(str[0]);
 				sum=(p.subTotal(str[0],qt[i]));
 				sumTax=p.getTax(str[0],qt[i]);
 				System.out.println(str[0]+"Parking");
 			}
-			//				for(int i1=0;i1<line1.length;i1++) {
-			//					String data[] =line1[i1].split(":");
-			//					if(data[0].contains(s3[0])) {
-			//						String temp[] = data[0].split(" ");
-			//						if(s3.length==3) 
-			//
-			//							this.fl.append(String.format("%-10s %-20s %-30s",temp[1],"Parking Pass",s3[2]));
-			//						else
-			//							this.fl.append(String.format("%-10s %-50s",temp[1],"Parking Pass"));
-			//					}
-			//				}
-			//				if(s3.length==3) {
-			//					String ref =s3[2];
-			//					int qty=0;
-			//					for(int j=0;j<s2.length;j++) {
-			//						String temp[] = s2[j].split(":");
-			//						if(ref.contains(temp[0])) {
-			//							qty=Integer.parseInt(temp[1]);
-			//						}
-			//					}
-			//					if(qty>(Integer.parseInt(s3[1]))){
-			//						ParkingPass p = new ParkingPass(s3[0]);
-			//						sum=(p.subTotal(s3[0], Integer.toString(0)));
-			//						sumTax=p.getTax(s3[0], Integer.toString(0));
-			//						break;
-			//					}
-			//					else {
-			//						ParkingPass p = new ParkingPass(s3[0]);
-			//						qty=(Integer.parseInt(s3[1]))-qty;
-			//						sumTax=p.getTax(s3[0],Integer.toString(qty));
-			//						sum=(p.subTotal(s3[0],Integer.toString(qty)));
-			//						break;
-			//					}
-			//
-			//				}
-			//				else{
-			//					ParkingPass p = new ParkingPass(s3[0]);
-			//					sum=(p.subTotal(s3[0], s3[1]));
-			//					sumTax=p.getTax(s3[0], s3[1]);
-			//					sumTotal+=(p.grandTotal(s3[0], s3[1]));
-			//					break;
-			//				}
-			//			}
+			))-qty;
+			
 			case 'S':{
 				Season s = new Season(str[0]);
 				sum=(s.subTotal(str[0], qt[i]));
 				System.out.println(str[0]+"Parking");
 			}
-			//				for(int i1=0;i1<line1.length;i1++) {
-			//					String data[] =line1[i1].split(":");
-			//					String temp[] = data[0].split(" ");
-			//					if(data[0].contains(s3[0])) 						
-			//						this.fl.append(String.format("%-10s %-20s %-30s",data[0],"Season Pass" ,data[2]));
-			//				}
-			//				Season s = new Season(s3[0]);
-			//				sum=(s.subTotal(s3[0], s3[1],s1[3]));
-			//				sumTax=(s.getTax(s3[0],s3[1],s1[3]));
-			//				break;
-			//			}
+			
 			case 'R':{
 				Refreshment r = new Refreshment(str[0]);
 				
@@ -392,26 +178,7 @@ public class InvoiceOutput{
 					sumTax=((r.getTax(str[0], qt[i]))-(0.05*(r.getTax(str[0], qt[i]))));
 					
 			}
-			//				for(int i1=0;i1<line1.length;i1++) {
-			//					String data[] =line1[i1].split(":");
-			//					if(data[0].contains(s3[0])) {
-			//						String temp[] = data[0].split(" ");
-			//						this.fl.append(String.format("%-10s %-50s",temp[1],data[2]));
-			//					}
-			//				}
-			//				if(ticketNumber==0) {
-			//					Refreshment r = new Refreshment(s3[0]);
-			//
-			//					sum=(r.subTotal(s3[0], s3[1]));
-			//					sumTax=(r.getTax(s3[0], s3[1]));
-			//					break;}
-			//				else {
-			//					Refreshment r = new Refreshment(s3[0]);
-			//					sum=((r.subTotal(s3[0], s3[1]))-(0.05*(r.subTotal(s3[0], s3[1]))));
-			//					sumTax=((r.getTax(s3[0], s3[1]))-(0.05*(r.getTax(s3[0], s3[1]))));
-			//				}
-			//
-			//			}
+			
 			}
 			sumTotal=sum+sumTax+this.fee.get(count2)-this.discount.get(count2);
 			this.fl.append(String.format("$%-10.2f $ %-10.2f $%-10.2f \n",sum,sumTax,sumTotal));
@@ -423,21 +190,7 @@ public class InvoiceOutput{
 		this.fl.append("=======================\n");
 		this.fl.append(String.format("%-60s $%-10.2f $%-10.2f $%-10.2f \n","SubTotal",sum2,sumTax2,sumTotal2));
 
-		//		if(getCustType(inv)=='G')
-		//		{
-		//
-		//		}
-		//		else {
-		//
-		//			this.fl.append(String.format("%-90s $%-10.2f \n","Discount",discount.get(count2)));
-		//			this.fl.append(String.format("%-90s $%-10.2f \n","Fee",fee.get(count2)));
-		//		}
-		//
-		//		this.fl.append(String.format("%-90s $%-10.2f \n\n","Total",(sumTotal2+this.fee.get(count2)-this.discount.get(count2))));
-		//
-		//		this.fl.append(String.format("%25s %-25s\n\n","","Thank You For Your Purchase"));
-		//		count2++;
-		//	}
+		
 	}
 	public double [] getPrice(String code) {
 		Connection conn = null;
@@ -558,71 +311,3 @@ public class InvoiceOutput{
 		return sub;
 	}
 }
-//	public StringBuilder getFl() {
-//		this.fl.append("===============================================================================================================================\n");
-//		return fl;
-//	}
-//
-//
-//	public char getType(String code) {
-//		ArrayList<Product> pro= fr.readProduct();
-//
-//		String[] line = pro.toString().split("\\)");
-//		for(int i=0;i<line.length;i++) {
-//			String data[] =line[i].split(":");
-//
-//			if(data[0].contains(code)) {
-//				return  data[1].charAt(0);
-//			}
-//		}
-//		return 0;
-//	}
-//	public char getCustType(Invoice inv) {
-//		String str[] = inv.toString().split("\\+");
-//		ArrayList<Customer> cust = fr.readCustomer();
-//		String st[]= cust.toString().split("\\)");
-//		for(int i=0;i<st.length;i++) {
-//			if(st[i].contains(str[1])) {
-//				String s [] = st[i].split(":");
-//				return s[1].charAt(0);
-//			}
-//		}
-//		return 0;
-//
-//
-//	}
-//	public StringBuilder output(ArrayList<Double> out){
-//		StringBuilder list = new StringBuilder();
-//		System.out.println(out);
-//		for(Double i : out ) {
-//			list.append(i);
-//		}
-//		return list;
-//	}
-//	public <T> String[] TK(ArrayList<T> list) {
-//		return list.toString().split("\\)");
-//	}
-//	
-//	public <T> String[] TKP(ArrayList<T> list) {
-//		return list.toString().split("\\(");
-//	}
-//	public String[] Toke(String str) {
-//		return str.split(":");
-//	}
-//
-//	public double sum(ArrayList<Double> list) {
-//		double sum=0;
-//		for(Double l : list) {
-//			sum+=l;
-//		}
-//		return sum;
-//	}
-//
-//
-//	@Override
-//	public void close() throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//	}*/
-
-//	}
